@@ -13,4 +13,12 @@ public interface IClienteRepository {
 	public List<Cliente> listarClientes();
 	
 	public void actualizar(Cliente cliente);
+
+void insertarCliente(Cliente cliente);
+Cliente buscarCliente(Integer id);
+void actualizarCliente(Cliente cliente);
+void borrarCliente(Integer id);
+
+	Cliente buscarClientePorApellido(String apellido);
+
 }

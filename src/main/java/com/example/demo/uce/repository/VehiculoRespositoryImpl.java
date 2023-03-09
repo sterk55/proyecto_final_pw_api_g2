@@ -46,5 +46,26 @@ public class VehiculoRespositoryImpl implements IVehiculoRepository {
 		this.entityManager.persist(vehiculo);
 	}
 
+	@Override
+	public void insertarVehiculo(Vehiculo vehiculo) {
+		this.entityManager.persist(vehiculo);
+	}
+
+	@Override
+	public Vehiculo buscarVehiculo(Integer id) {
+		return this.entityManager.find(Vehiculo.class,id);
+	}
+
+	@Override
+	public void actualizarVehiculo(Vehiculo vehiculo) {
+		this.entityManager.merge(vehiculo);
+	}
+
+	@Override
+	public void borrarVehiculo(Integer id) {
+		Vehiculo vehiculoBorrar = this.buscarVehiculo(id);
+		this.entityManager.remove(vehiculoBorrar);
+	}
 
 }
+

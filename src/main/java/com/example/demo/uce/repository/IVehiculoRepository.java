@@ -13,5 +13,10 @@ public interface IVehiculoRepository {
 	public Vehiculo buscaVehiculoPorPlaca(String placa);
 	
 	public void actualiza(Vehiculo vehiculo); 
-	
+
+void insertarVehiculo(Vehiculo vehiculo);
+Vehiculo buscarVehiculo(Integer id);
+void actualizarVehiculo(Vehiculo vehiculo);
+void borrarVehiculo(Integer id);
+
 }

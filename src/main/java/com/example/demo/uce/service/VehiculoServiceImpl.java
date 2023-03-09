@@ -47,6 +47,13 @@ public class VehiculoServiceImpl implements IVehiculoService {
 	}
 
 	@Override
+	public VehiculoTo buscarVehiculo(Integer id) {
+		Vehiculo vi = this.vehiculoRepository.buscarVehiculo(id);
+		return convertir(vi);
+	}
+
+
+	@Override
 	public List<VehiculoTo> buscaVehiculosDisponibles(String marca, String modelo) {
 		List<Vehiculo> lista = this.vehiculoRepository.buscaVehiculosDisponibles(marca, modelo);
 		List<VehiculoTo> listaFinal = lista.stream().map(vehiculo -> this.convertir(vehiculo)).collect(Collectors.toList());
@@ -196,6 +203,14 @@ public class VehiculoServiceImpl implements IVehiculoService {
 		vehiT.setDisponible(vehiculo.getDisponible());
 		return vehiT;
 	}
-	
-	
+
+	@Override
+	public void actualizarVehiculo(Vehiculo vehiculo) {
+		this.vehiculoRepository.actualizarVehiculo(vehiculo);
+	}
+
+	@Override
+	public void borrarVehiculo(Integer id) {
+		this.vehiculoRepository.borrarVehiculo(id);
+	}
 }

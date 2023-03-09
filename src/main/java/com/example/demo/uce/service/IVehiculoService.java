@@ -2,6 +2,7 @@ package com.example.demo.uce.service;
 
 import java.util.List;
 
+import com.example.demo.uce.repository.modelo.Cliente;
 import com.example.demo.uce.repository.modelo.Vehiculo;
 import com.example.demo.uce.service.to.VehiculoTo;
 
@@ -22,4 +23,11 @@ public interface IVehiculoService {
 	public String compruebaVehiculoPorPlacaFecha(String placa, String fInicio, String fFin);
 
 	public void retiraVehiculoReservado(Integer nReserva);
+
+
+
+	VehiculoTo buscarVehiculo(Integer id);
+	void actualizarVehiculo(Vehiculo vehiculo);
+	void borrarVehiculo(Integer id);
+
 }

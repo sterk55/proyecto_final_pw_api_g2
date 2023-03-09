@@ -94,5 +94,24 @@ public class ClienteServiceImpl implements IClienteService {
 	public void actualizarCliente(Cliente cliente) {
 		this.clienteRepository.actualizar(cliente);
 	}
-	
+
+
+	@Override
+	public ClienteTo buscarCliente(Integer id) {
+		Cliente ci = this.clienteRepository.buscarCliente(id);
+		return convertirClienteTo(ci);
+	}
+
+
+	@Override
+	public void borrarCliente(Integer id) {
+		this.clienteRepository.borrarCliente(id);
+	}
+
+	@Override
+	public ClienteTo buscarClientePorApellido(String apellido) {
+		Cliente cl = this.clienteRepository.buscarClientePorApellido(apellido);
+		return convertirClienteTo(cl);
+	}
+
 }

@@ -17,5 +17,10 @@ public interface IClienteService {
 	public List<ClienteTo> listaClientesVIP();
 	
 	public void actualizarCliente(Cliente cliente);
-	
+
+
+	ClienteTo buscarCliente(Integer id);
+
+	void borrarCliente(Integer id);
+	ClienteTo buscarClientePorApellido(String apellido);
 }

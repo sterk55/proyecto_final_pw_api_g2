@@ -43,5 +43,34 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	public void actualizar(Cliente cliente) {
 		this.em.merge(cliente);
 	}
-	
+
+	@Override
+	public void insertarCliente(Cliente cliente) {
+		this.em.persist(cliente);
+	}
+
+	@Override
+	public Cliente buscarCliente(Integer id) {
+		return this.em.find(Cliente.class,id);
+	}
+
+	@Override
+	public void actualizarCliente(Cliente cliente) {
+		this.em.merge(cliente);
+	}
+
+	@Override
+	public void borrarCliente(Integer id) {
+		Cliente clienteBorrar = this.buscarCliente(id);
+		this.em.remove(clienteBorrar);
+	}
+
+	@Override
+	public Cliente buscarClientePorApellido(String apellido) {
+		//Buscar uno en especifico
+		TypedQuery<Cliente> miTypeQuery = this.em.createQuery("select g from Cliente g where g.apellido =:apellido",Cliente.class);
+		miTypeQuery.setParameter("apellido", apellido);
+		return miTypeQuery.getSingleResult();
+
+		}
 }
