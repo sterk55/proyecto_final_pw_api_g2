@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,5 +46,11 @@ public class ClienteRestFulController {
 	@GetMapping(path = "/vip" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ClienteTo>> listarClientesVip(){
 		return ResponseEntity.ok(this.clienteService.listaClientesVIP());
+	}
+	
+	@PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void actualizarCliente(@PathVariable("id") Integer id, @RequestBody Cliente cliente){
+		cliente.setId(id);
+		this.clienteService.actualizarCliente(cliente);
 	}
 }
