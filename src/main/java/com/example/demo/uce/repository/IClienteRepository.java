@@ -8,8 +8,10 @@ public interface IClienteRepository {
 
 	public void registrarCliente(Cliente cliente);
 	
-	public Cliente buscarClienteCedula(String idCliente);
+	public Cliente buscarClienteApellido(String apellido);
 	
+	public Cliente buscarClienteCedula(String cedula);
+
 	public List<Cliente> listarClientes();
 	
 	public void actualizar(Cliente cliente);

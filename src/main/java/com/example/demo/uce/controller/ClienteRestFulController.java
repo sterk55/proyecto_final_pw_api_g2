@@ -37,10 +37,17 @@ public class ClienteRestFulController {
 		return msj;
 	}
 	
+	@CrossOrigin("http://localhost:8080")
+	@GetMapping(path = "/{apellido}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ClienteAuxTo> buscarClienteApellido(@PathVariable("apellido") String apellido){
+		return ResponseEntity.ok(this.clienteService.buscarClienteToApellido(apellido));
+	}
+
 	@GetMapping(path = "/{cedula}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ClienteAuxTo> buscarClienteCedula(@PathVariable("cedula") String cedula){
 		return ResponseEntity.ok(this.clienteService.buscarClienteToCedula(cedula));
 	}
+	
 	
 	@GetMapping(path = "/vip" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ClienteTo>> listarClientesVip(){

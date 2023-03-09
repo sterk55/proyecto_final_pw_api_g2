@@ -14,4 +14,6 @@ public interface IVehiculoRepository {
 	
 	public void actualiza(Vehiculo vehiculo); 
 	
+	public List<Vehiculo> listarVehiculos();
+	
 }

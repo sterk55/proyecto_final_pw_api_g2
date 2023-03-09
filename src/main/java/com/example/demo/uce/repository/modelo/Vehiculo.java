@@ -55,6 +55,8 @@ public class Vehiculo implements Serializable{
 	
 	@OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL)
 	private List<Reserva> reserva;
+
+	
 	
 	public String getAnioFablicacion() {
 		return anioFablicacion;

@@ -25,19 +25,19 @@ public class ClienteServiceImpl implements IClienteService {
 	}
 
 	@Override
-	public ClienteAuxTo buscarClienteToCedula(String idCliente) {
-		if(this.clienteRepository.buscarClienteCedula(idCliente)==null) {
+	public ClienteAuxTo buscarClienteToApellido(String apellido) {
+		if(this.clienteRepository.buscarClienteApellido(apellido)==null) {
 			return null;
 		}
-		return convertirCliAuxTo(this.clienteRepository.buscarClienteCedula(idCliente));
+		return convertirCliAuxTo(this.clienteRepository.buscarClienteApellido(apellido));
 	}
 	
 	@Override
-	public Cliente buscarClienteCedula(String idCliente) {
-		if(this.clienteRepository.buscarClienteCedula(idCliente)==null) {
+	public Cliente buscarClienteApellido(String apellido) {
+		if(this.clienteRepository.buscarClienteApellido(apellido)==null) {
 			return null;
 		}
-		return this.clienteRepository.buscarClienteCedula(idCliente);
+		return this.clienteRepository.buscarClienteApellido(apellido);
 	}
 	
 	@Override
@@ -94,5 +94,20 @@ public class ClienteServiceImpl implements IClienteService {
 	public void actualizarCliente(Cliente cliente) {
 		this.clienteRepository.actualizar(cliente);
 	}
+
+	@Override
+	public ClienteAuxTo buscarClienteToCedula(String idCliente) {
+		if(this.clienteRepository.buscarClienteCedula(idCliente)==null) {
+			return null;
+		}
+		return convertirCliAuxTo(this.clienteRepository.buscarClienteCedula(idCliente));
+	}
 	
+	@Override
+	public Cliente buscarClienteCedula(String idCliente) {
+		if(this.clienteRepository.buscarClienteCedula(idCliente)==null) {
+			return null;
+		}
+		return this.clienteRepository.buscarClienteCedula(idCliente);
+	}
 }

@@ -10,8 +10,12 @@ public interface IClienteService {
 
 	public void registrarCliente(Cliente cliente);
 	
-	public Cliente buscarClienteCedula(String idCliente);
+	public Cliente buscarClienteApellido(String apellido);
 	
+	public ClienteAuxTo buscarClienteToApellido(String apellido);
+	
+	public Cliente buscarClienteCedula(String idCliente);
+
 	public ClienteAuxTo buscarClienteToCedula(String idCliente);
 	
 	public List<ClienteTo> listaClientesVIP();

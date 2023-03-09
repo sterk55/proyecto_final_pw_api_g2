@@ -3,6 +3,7 @@ package com.example.demo.uce.service;
 import java.util.List;
 
 import com.example.demo.uce.repository.modelo.Vehiculo;
+import com.example.demo.uce.service.to.VehiculoAuxTo;
 import com.example.demo.uce.service.to.VehiculoTo;
 
 public interface IVehiculoService {
@@ -22,4 +23,7 @@ public interface IVehiculoService {
 	public String compruebaVehiculoPorPlacaFecha(String placa, String fInicio, String fFin);
 
 	public void retiraVehiculoReservado(Integer nReserva);
+
+	public List<VehiculoAuxTo> listaVehiculosVIP();
+
 }

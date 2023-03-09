@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.uce.repository.modelo.Vehiculo;
 import com.example.demo.uce.service.IVehiculoService;
 import com.example.demo.uce.service.to.ReservaAux;
+import com.example.demo.uce.service.to.VehiculoAuxTo;
 import com.example.demo.uce.service.to.VehiculoTo;
 
 @RestController
@@ -76,5 +77,11 @@ public class VehiculoRestFullController {
 				.ok(this.vehiculoService.compruebaVehiculoPorPlacaFecha(placa, fechaInicio, fechaFin));
 	}
 	
+	@GetMapping(path = "/vip", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<VehiculoAuxTo>> listarVehiculoVip(){
+
+		return ResponseEntity.ok(this.vehiculoService.listaVehiculosVIP());
+
+	}
 	
 }

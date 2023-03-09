@@ -46,5 +46,11 @@ public class VehiculoRespositoryImpl implements IVehiculoRepository {
 		this.entityManager.persist(vehiculo);
 	}
 
+	@Override
+	public List<Vehiculo> listarVehiculos() {
+		TypedQuery<Vehiculo> myQuery = this.entityManager.createQuery("SELECT c FROM Vehiculo c WHERE v.placa", Vehiculo.class);
+		return myQuery.getResultList();
+	}
+
 
 }

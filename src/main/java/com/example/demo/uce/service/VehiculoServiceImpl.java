@@ -2,6 +2,8 @@ package com.example.demo.uce.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +15,7 @@ import com.example.demo.uce.repository.modelo.Cliente;
 import com.example.demo.uce.repository.modelo.CobroRealizado;
 import com.example.demo.uce.repository.modelo.Reserva;
 import com.example.demo.uce.repository.modelo.Vehiculo;
+import com.example.demo.uce.service.to.VehiculoAuxTo;
 import com.example.demo.uce.service.to.VehiculoTo;
 
 @Service
@@ -196,6 +199,45 @@ public class VehiculoServiceImpl implements IVehiculoService {
 		vehiT.setDisponible(vehiculo.getDisponible());
 		return vehiT;
 	}
+
+	private VehiculoAuxTo converTo(Vehiculo vehiculo){
+		VehiculoAuxTo vehiToaux = new VehiculoAuxTo();
+		vehiToaux.setId(vehiculo.getId());
+		vehiToaux.setPlaca(vehiculo.getPlaca());
+		vehiToaux.setValorIva(valorIva(vehiculo.getReserva()));
+		vehiToaux.setValorTotal(valorTotal(vehiculo.getReserva()));
+		return vehiToaux;
+
+
+	}
+
+	private Double valorIva(List<Reserva> reservasCliente) {
+		Double valorI = 0.0;
+		for(Reserva reserva : reservasCliente) {
+			System.out.println(reserva);
+			valorI += reserva.getCobroRealizado().getValorIva();
+		}
+		return valorI;
+	}
+	private Double valorTotal(List<Reserva> reservasCliente) {
+		Double valorT = 0.0;
+		for(Reserva reserva : reservasCliente) {
+			valorT += reserva.getValorPagar();
+		}
+		return valorT;
+	}
+
+	@Override
+	public List<VehiculoAuxTo> listaVehiculosVIP() {
+		List<Vehiculo> lsVehiculo = this.vehiculoRepository.listarVehiculos();
+		List<VehiculoAuxTo> lsVehiculoTo = new ArrayList<>();
+		for(Vehiculo v : lsVehiculo){
+			lsVehiculoTo.add(converTo(v));
+		}
+		lsVehiculoTo.sort(Comparator.comparing(VehiculoAuxTo::getValorTotal).reversed());
+		return lsVehiculoTo;
+
+}
 	
 	
 }

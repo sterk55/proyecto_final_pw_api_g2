@@ -24,9 +24,9 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	}
 
 	@Override
-	public Cliente buscarClienteCedula(String idCliente) {
-		TypedQuery<Cliente> myQuery = this.em.createQuery("SELECT c FROM Cliente c WHERE c.cedula = :idCliente",Cliente.class);
-		myQuery.setParameter("idCliente", idCliente);
+	public Cliente buscarClienteApellido(String apellido) {
+		TypedQuery<Cliente> myQuery = this.em.createQuery("SELECT c FROM Cliente c WHERE c.apellido = :apellido",Cliente.class);
+		myQuery.setParameter("apellido", apellido);
 		if(myQuery.getResultList().isEmpty()) {
 			return null;
 		}
@@ -42,6 +42,16 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	@Override
 	public void actualizar(Cliente cliente) {
 		this.em.merge(cliente);
+	}
+
+	@Override
+	public Cliente buscarClienteCedula(String idCliente) {
+		TypedQuery<Cliente> myQuery = this.em.createQuery("SELECT c FROM Cliente c WHERE c.cedula = :idCliente",Cliente.class);
+		myQuery.setParameter("idCliente", idCliente);
+		if(myQuery.getResultList().isEmpty()) {
+			return null;
+		}
+		return myQuery.getResultList().get(0);
 	}
 	
 }

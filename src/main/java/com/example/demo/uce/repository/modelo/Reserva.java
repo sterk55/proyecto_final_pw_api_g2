@@ -36,7 +36,7 @@ public class Reserva implements Serializable{
 	
 	@Column(name = "rese_fecha_fin")
 	private LocalDate fechaFin;
-	
+
 	@Column(name = "rese_estado")
 	private String estado;//Generado-Ejecutado
 	
@@ -53,6 +53,22 @@ public class Reserva implements Serializable{
 	
 	@OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL)
 	private CobroRealizado cobroRealizado;
+
+	public int añoFechaFin(){
+		return fechaFin.getYear();
+	}
+
+	public int añoFechaIni(){
+		return fechaInicio.getYear();
+	}
+
+	public int mesFechaFin(){
+		return fechaFin.getMonthValue();
+	}
+
+	public int mesFechaIni(){
+		return fechaInicio.getMonthValue();
+	}
 
 	public Cliente getCliente() {
 		return cliente;
