@@ -66,6 +66,11 @@ public class VehiculoRespositoryImpl implements IVehiculoRepository {
 		Vehiculo vehiculoBorrar = this.buscarVehiculo(id);
 		this.entityManager.remove(vehiculoBorrar);
 	}
+	@Override
+	public List<Vehiculo> listarVehiculos() {
+		TypedQuery<Vehiculo> myQuery = this.entityManager.createQuery("SELECT c FROM Vehiculo c WHERE c.placa", Vehiculo.class);
+		return myQuery.getResultList();
+	}
 
 }
 

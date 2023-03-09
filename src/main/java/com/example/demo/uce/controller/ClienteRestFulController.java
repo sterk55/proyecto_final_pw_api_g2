@@ -47,14 +47,17 @@ public class ClienteRestFulController {
 	}
 
 
-	@PutMapping(path ="/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void actualizarCliente(@PathVariable("id") Integer id, @RequestBody Cliente cliente) {
-		cliente.setId(id);
-		this.clienteService.actualizarCliente(cliente);
-	}
+
 
 	@DeleteMapping(path ="/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	public void eliminarCliente(@PathVariable("id") Integer id) {
+
 		this.clienteService.borrarCliente(id);
+	}
+
+	@PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void actualizarCliente(@PathVariable("id") Integer id, @RequestBody Cliente cliente){
+		cliente.setId(id);
+		this.clienteService.actualizarCliente(cliente);
 	}
 }

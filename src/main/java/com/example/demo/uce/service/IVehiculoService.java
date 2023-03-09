@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.uce.repository.modelo.Cliente;
 import com.example.demo.uce.repository.modelo.Vehiculo;
+import com.example.demo.uce.service.to.VehiculoAuxTo;
 import com.example.demo.uce.service.to.VehiculoTo;
 
 public interface IVehiculoService {
@@ -24,6 +25,7 @@ public interface IVehiculoService {
 
 	public void retiraVehiculoReservado(Integer nReserva);
 
+	public List<VehiculoAuxTo> listaVehiculosVIP();
 
 
 	VehiculoTo buscarVehiculo(Integer id);

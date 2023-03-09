@@ -12,7 +12,9 @@ public interface IVehiculoRepository {
 	
 	public Vehiculo buscaVehiculoPorPlaca(String placa);
 	
-	public void actualiza(Vehiculo vehiculo); 
+	public void actualiza(Vehiculo vehiculo);
+
+	public List<Vehiculo> listarVehiculos();
 
 void insertarVehiculo(Vehiculo vehiculo);
 Vehiculo buscarVehiculo(Integer id);

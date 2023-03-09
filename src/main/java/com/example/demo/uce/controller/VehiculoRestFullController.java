@@ -2,6 +2,7 @@ package com.example.demo.uce.controller;
 
 import java.util.List;
 
+import com.example.demo.uce.service.to.VehiculoAuxTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -82,5 +83,10 @@ public class VehiculoRestFullController {
 	public void eliminarVehiculo(@PathVariable("id") Integer id) {
 		this.vehiculoService.borrarVehiculo(id);
 	}
-	
+	@GetMapping(path = "/vip", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<VehiculoAuxTo>> listarVehiculoVip(){
+
+		return ResponseEntity.ok(this.vehiculoService.listaVehiculosVIP());
+
+	}
 }
